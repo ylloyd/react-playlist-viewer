@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ArtistItem from "ArtistItem";
+import List from "List";
 
 const artists = [
   {name:"Bob Marley"},
@@ -14,26 +14,15 @@ const kinds = {
   electro: {name:"Electro"}
 }
 
+const kindsArray = Object.keys(kinds).map((k) => { return kinds[k] });
+
 export default class App extends Component {
   render() {
     return (
       <div>
-      {
-        artists &&
-        artists.map((artist, index) => {
-          return (
-              <ArtistItem key={index} name={artist.name} />
-          );
-        })
-      }
-      {
-        kinds &&
-        Object.keys(kinds).map((key, index) => {
-          return (
-              <ArtistItem key={index} name={kinds[key].name} />
-          );
-        })
-      }
-      </div>)
+        <List items={artists} />
+        <List items={kindsArray} />
+      </div>
+    )
   }
 }
