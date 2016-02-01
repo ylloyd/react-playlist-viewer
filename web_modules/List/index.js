@@ -38,7 +38,7 @@ export default class List extends Component {
               items &&
               items.map((item, index) => {
                 return (
-                    item.name && item.name.toLowerCase().search(this.state.inputValue)!=-1 &&
+                    item.name && item.name.toLowerCase().search(this.state.inputValue.toLowerCase())!=-1 &&
                     <Item key={index} name={item.name} />
                 );
               })
