@@ -20,8 +20,8 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <List items={artists} />
-        <List items={kindsArray} />
+        <List title="Artist" items={artists} />
+        <List title="Kind" items={kindsArray} />
       </div>
     )
   }
