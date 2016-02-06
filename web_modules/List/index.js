@@ -1,4 +1,6 @@
 import React, {PropTypes, Component } from 'react';
+import debounce from 'lodash.debounce';
+
 import Item from "Item";
 import Input from "Input";
 
@@ -30,37 +32,6 @@ export default class List extends Component {
       return (item.name && item.name.toLowerCase().search(this.state.inputValue.toLowerCase())!=-1);
     };
 
-    throttle(callback, delay) {
-      var last;
-      var timer;
-      return (...args) => {
-          var context = this;
-          var now = +new Date();
-          if (last && now < last + delay) {
-              // le délai n'est pas écoulé on reset le timer
-              clearTimeout(timer);
-              timer = setTimeout(() => {
-                  last = now;
-                  callback.apply(context, args);
-              }, delay);
-          } else {
-              last = now;
-              callback.apply(context, args);
-          }
-      };
-    };
-
-    debounce = (callback, delay) => {
-      var timer;
-      return (...args)=> {
-          var context = this;
-          clearTimeout(timer);
-          timer = setTimeout(()=>{
-              callback.apply(context, args);
-          }, delay)
-      }
-    };
-
     render() {
 
       const {
@@ -70,7 +41,7 @@ export default class List extends Component {
         autoFilter,
       } = this.props
 
-      const onChangeHandler = (onInputChange) ? this.debounce(onInputChange,300) :  this.onChangeHandler
+      const onChangeHandler = (onInputChange) ? debounce(onInputChange,300) :  this.onChangeHandler
 
       return (
         <div className="list">
