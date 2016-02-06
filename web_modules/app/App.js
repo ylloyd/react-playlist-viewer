@@ -2,19 +2,11 @@ import React, { Component } from 'react';
 import List from "List";
 import consts from "./consts"
 
-const kinds = {
-  rap: {name:"Rap"},
-  rock: {name:"Rock"},
-  electro: {name:"Electro"}
-}
-
-const kindsArray = Object.keys(kinds).map((k) => { return kinds[k] });
-
-
 export default class App extends Component {
 
   state = {
-    artists: null
+    artists: null,
+    kinds: null,
   };
 
   fetchArtist(name){
@@ -25,10 +17,25 @@ export default class App extends Component {
             }
         })
     });
-  }
+  };
+
+  fetchKinds(){
+    fetch(consts.api.enpoints.getKinds()).then((response) => {
+      response.json().then((data)=>{
+            if(!data.error){
+              this.setState({kinds:data.genres})
+            }
+        })
+    });
+  };
+
 
   onInputArtistChange = (value) => {
       this.fetchArtist(value);
+  };
+
+  componentDidMount() {
+      this.fetchKinds();
   };
 
   render() {
@@ -39,7 +46,8 @@ export default class App extends Component {
               autoFilter={true}
               onInputChange={this.onInputArtistChange} />
         <List title="Kind"
-              items={kindsArray} />
+              items={this.state.kinds}
+              limit={10} />
       </div>
     )
   }

@@ -1,4 +1,5 @@
 const apiPath = `https://api.spotify.com/v1/`;
+const apiExplorerPath = `https://artistexplorer.spotify.com/`
 
 export default {
   api:{
@@ -6,6 +7,9 @@ export default {
 
       getSearch:(query, type)=>{
         return apiPath+`search?query=${query}*&offset=0&limit=10&type=${type}`
+      },
+      getKinds: () =>{
+        return apiExplorerPath+`api/genres`
       }
 
     }

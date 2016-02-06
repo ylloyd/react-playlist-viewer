@@ -11,6 +11,7 @@ export default class List extends Component {
         items: PropTypes.array,
         onInputChange: PropTypes.func,
         autoFilter: PropTypes.bool,
+        limit: PropTypes.number,
     };
 
     static defaultProps = {
@@ -18,6 +19,7 @@ export default class List extends Component {
         items: [],
         onInputChange: null,
         autoFilter: true,
+        limit: -1,
     };
 
     state = {
@@ -39,9 +41,11 @@ export default class List extends Component {
         items,
         onInputChange,
         autoFilter,
+        limit,
       } = this.props
 
       const onChangeHandler = (onInputChange) ? debounce(onInputChange,300) :  this.onChangeHandler
+      let selectedIndex = 0;
 
       return (
         <div className="list">
@@ -51,8 +55,13 @@ export default class List extends Component {
             {
               items &&
               items.map((item, index) => {
+
+                const isFilter = (!autoFilter || autoFilter && this.filterName(item))
+                if(isFilter) selectedIndex++;
+                const isLimited = (limit==-1 || selectedIndex<=limit)
+
                 return (
-                    (!autoFilter || autoFilter && this.filterName(item)) &&
+                    isFilter && isLimited &&
                     <Item key={index} name={item.name} />
                 );
               })
