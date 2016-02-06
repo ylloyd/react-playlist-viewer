@@ -48,7 +48,7 @@ export default class List extends Component {
               items &&
               items.map((item, index) => {
                 return (
-                    !autoFilter || this.filterName(item) &&
+                    (!autoFilter || autoFilter && this.filterName(item)) &&
                     <Item key={index} name={item.name} />
                 );
               })
