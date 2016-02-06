@@ -12,6 +12,9 @@ module.exports = {
     publicPath: '/static/'
   },
   plugins: [
+    new webpack.ProvidePlugin({
+        fetch: "exports?self.fetch!whatwg-fetch"
+    }),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
