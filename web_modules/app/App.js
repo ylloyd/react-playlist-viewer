@@ -3,6 +3,8 @@ import fetchJSON from "./fetchJSON";
 import List from "List";
 import consts from "./consts"
 
+import ItemDetails from "ItemDetails"
+
 export default class App extends Component {
 
   state = {
@@ -45,6 +47,10 @@ export default class App extends Component {
         <List title="Kind"
               items={this.state.kinds}
               limit={10} />
+        <ItemDetails name="Bob Marley"
+                     image={"https://i.scdn.co/image/22e6ec2e00e3fe5ce9e0aadb3ed2616d900bb385"}
+                     kinds={["a","b","c"]}
+                     songs={[{name:"toto"},{name:"tata"},{name:"titi"},{name:"tutu"}]}  />
       </div>
     )
   }
