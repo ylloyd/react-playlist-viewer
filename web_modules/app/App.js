@@ -27,14 +27,17 @@ export default class App extends Component {
     });
   }
 
-  componentDidMount() {
-      this.fetchArtist("Bob");
-  }
+  onInputArtistChange = (value) => {
+      this.fetchArtist(value);
+  };
 
   render() {
     return (
       <div>
-        <List title="Artist" items={this.state.artists} />
+        <List title="Artist"
+              items={this.state.artists}
+              autoFilter={false}
+              onInputChange={this.onInputArtistChange} />
         <List title="Kind" items={kindsArray} />
       </div>
     )
