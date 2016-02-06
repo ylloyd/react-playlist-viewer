@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import fetchJSON from "./fetchJSON";
 import List from "List";
 import consts from "./consts"
 
@@ -10,22 +11,18 @@ export default class App extends Component {
   };
 
   fetchArtist(name){
-    fetch(consts.api.enpoints.getSearch(name,"artist")).then((response) => {
-      response.json().then((data)=>{
-            if(!data.error){
-              this.setState({artists:data.artists.items})
-            }
-        })
+    fetchJSON(consts.api.enpoints.getSearch(name,"artist")).then((response) => {
+        if(!response.error){
+          this.setState({artists:response.artists.items})
+        }
     });
   };
 
   fetchKinds(){
-    fetch(consts.api.enpoints.getKinds()).then((response) => {
-      response.json().then((data)=>{
-            if(!data.error){
-              this.setState({kinds:data.genres})
-            }
-        })
+    fetchJSON(consts.api.enpoints.getKinds()).then((response) => {
+        if(!response.error){
+          this.setState({kinds:response.genres})
+        }
     });
   };
 
