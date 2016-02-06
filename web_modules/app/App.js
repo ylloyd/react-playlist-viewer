@@ -36,9 +36,10 @@ export default class App extends Component {
       <div>
         <List title="Artist"
               items={this.state.artists}
-              autoFilter={false}
+              autoFilter={true}
               onInputChange={this.onInputArtistChange} />
-        <List title="Kind" items={kindsArray} />
+        <List title="Kind"
+              items={kindsArray} />
       </div>
     )
   }
