@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 
+import styles from "./index.css"
+
 const Item = ({name ="", image=null, kinds=[], songs=[]}) =>
 
-(<div className="itemDetails">
+(<div className={styles.itemDetails}>
     {
       image &&
-      <img src={image} className="itemDetailsImg" />
+      <img src={image} className={styles.image} />
     }
-    <h2 className="itemDetailsTitle">{name}</h2>
-    <div className="itemDetailsKinds">
+    <h2 className={styles.title}>{name}</h2>
+    <div className={styles.kinds}>
       {
         kinds &&
         kinds.map((item, index) => {
@@ -17,11 +19,11 @@ const Item = ({name ="", image=null, kinds=[], songs=[]}) =>
         })
       }
     </div>
-    <ul>
+    <ul className={styles.list}>
       {
         songs &&
         songs.map((song, index) => {
-          return <li className="itemDetailsSong" key={index}>{song.name}</li>
+          return <li className={styles.song} key={index}>{song.name}</li>
         })
       }
     </ul>
