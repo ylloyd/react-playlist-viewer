@@ -1,5 +1,7 @@
 import React, {PropTypes, Component} from "react"
 
+import styles from "./index.css"
+
 export default class Input extends Component {
 
     static propTypes = {
@@ -50,7 +52,7 @@ export default class Input extends Component {
 
         return (
             <input
-                className="input"
+                className={styles.input}
                 type={type}
                 name={name}
                 placeholder={placeholder}

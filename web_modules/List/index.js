@@ -4,6 +4,8 @@ import debounce from 'lodash.debounce';
 import Item from "Item";
 import Input from "Input";
 
+import styles from "./index.css"
+
 export default class List extends Component {
 
     static propTypes = {
@@ -48,7 +50,7 @@ export default class List extends Component {
       let selectedIndex = 0;
 
       return (
-        <div className="list">
+        <div className={styles.list}>
             {
                 <Input placeholder={title} onChange={onChangeHandler}/>
             }
