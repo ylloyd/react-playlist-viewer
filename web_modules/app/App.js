@@ -47,10 +47,10 @@ export default class App extends Component {
         <List title="Kind"
               items={this.state.kinds}
               limit={10} />
-        <ItemDetails name="Bob Marley"
-                     image={"https://i.scdn.co/image/22e6ec2e00e3fe5ce9e0aadb3ed2616d900bb385"}
-                     kinds={["a","b","c"]}
-                     songs={[{name:"toto"},{name:"tata"},{name:"titi"},{name:"tutu"}]}  />
+        <ItemDetails name="Odezenne"
+                     image={"https://i.scdn.co/image/ae22a4f41ab82ac18dcf0d83bd86703c3b83ee76"}
+                     kinds={["Rap","Hip-Hop","Underground"]}
+                     songs={[{name:"Bouche à lèvres"},{name:"Saxophone"},{name:"Vilaine"},{name:"Souffle le vent"},{name:"Vodka"}]}  />
       </div>
     )
   }

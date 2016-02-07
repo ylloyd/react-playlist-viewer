@@ -9,13 +9,13 @@ const Item = ({name ="", image=null, kinds=[], songs=[]}) =>
     }
     <h2 className="itemDetailsTitle">{name}</h2>
     <div className="itemDetailsKinds">
-    {
-      kinds &&
-      kinds.map((item, index) => {
-        const isLastItem = index<kinds.length-1;
-        return <span key={index}>{item}{isLastItem && ", "}</span>
-      })
-    }
+      {
+        kinds &&
+        kinds.map((item, index) => {
+          const isLastItem = index<kinds.length-1;
+          return <span key={index}>{item}{isLastItem && ", "}</span>
+        })
+      }
     </div>
     <ul>
       {
