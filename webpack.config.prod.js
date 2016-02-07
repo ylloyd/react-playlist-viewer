@@ -1,5 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
   devtool: 'source-map',
@@ -15,6 +16,7 @@ module.exports = {
     new webpack.ProvidePlugin({
         fetch: "exports?self.fetch!whatwg-fetch"
     }),
+    new ExtractTextPlugin("styles.css"),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
@@ -31,6 +33,14 @@ module.exports = {
     loaders: [{
       test: /\.js$/,
       loaders: ['babel'],
+      include: path.join(__dirname, 'web_modules')
+    },
+    {
+      test: /\.css$/,
+      loader: ExtractTextPlugin.extract(
+        "style-loader",
+        "css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]"
+       ),
       include: path.join(__dirname, 'web_modules')
     }]
   }
