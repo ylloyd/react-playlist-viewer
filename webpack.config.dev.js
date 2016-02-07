@@ -1,5 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
@@ -18,13 +19,24 @@ module.exports = {
     new webpack.NoErrorsPlugin(),
     new webpack.ProvidePlugin({
         fetch: "exports?self.fetch!whatwg-fetch"
-    })
+    }),
+    new ExtractTextPlugin("styles.css")
   ],
   module: {
-    loaders: [{
-      test: /\.jsx?/,
-      loaders: ['babel'],
-      include: path.join(__dirname, 'web_modules')
-    }]
+    loaders: [
+      {
+        test: /\.jsx?/,
+        loaders: ['babel'],
+        include: path.join(__dirname, 'web_modules')
+      },
+      {
+        test: /\.css$/,
+        loader: ExtractTextPlugin.extract(
+          "style-loader",
+          "css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]"
+         ),
+        include: path.join(__dirname, 'web_modules')
+      }
+    ]
   }
 };
