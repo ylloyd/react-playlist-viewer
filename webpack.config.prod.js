@@ -43,5 +43,11 @@ module.exports = {
        ),
       include: path.join(__dirname, 'web_modules')
     }]
-  }
+  },
+  postcss: [
+    require("autoprefixer"),
+    require("postcss-custom-properties"),
+    require("postcss-custom-media"),
+    require("postcss-calc")
+  ],
 };
