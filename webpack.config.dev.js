@@ -33,10 +33,17 @@ module.exports = {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract(
           "style-loader",
-          "css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]"
+          "css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader"
          ),
         include: path.join(__dirname, 'web_modules')
       }
     ]
-  }
+  },
+  postcss: [
+    require("autoprefixer"),
+    require("postcss-custom-properties"),
+    require("postcss-custom-media"),
+    require("postcss-calc")
+  ],
+
 };
