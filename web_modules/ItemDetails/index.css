@@ -31,3 +31,14 @@
   padding: 5px;
   margin: 5px 0px 0px 5px;
 }
+
+@media (--small-viewport) {
+  .itemDetails{
+    background: #000;
+    color: #FFF;
+  }
+
+  .song {
+    border-top: solid 1px #FFF;
+  }
+}

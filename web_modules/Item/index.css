@@ -1,5 +1,4 @@
 :root {
-  --color: #FFF;
   --background: #000;
 }
 
@@ -7,12 +6,12 @@
     padding:10px;
     border:solid 1px var(--background);
     width:200px;
-    color: var(--color);
+    color: var(--white);
     background: var(--background);
     margin:2px;
 }
 
 .item:hover {
   color: var(--background);
-  background: var(--color);
+  background: var(--white);
 }

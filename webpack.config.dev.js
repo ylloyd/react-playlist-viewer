@@ -1,6 +1,8 @@
 var path = require('path');
 var webpack = require('webpack');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var webpackPostcssTools = require("webpack-postcss-tools");
+var globalMap = webpackPostcssTools.makeVarMap("web_modules/app/css/global.css");
 
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
@@ -41,8 +43,12 @@ module.exports = {
   },
   postcss: [
     require("autoprefixer"),
-    require("postcss-custom-properties"),
-    require("postcss-custom-media"),
+    require("postcss-custom-properties")({
+        variables: globalMap.vars
+    }),
+    require("postcss-custom-media")({
+        extensions: globalMap.media
+    }),
     require("postcss-calc")
   ],
 
