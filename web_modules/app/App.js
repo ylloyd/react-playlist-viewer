@@ -4,6 +4,7 @@ import List from "List";
 import consts from "./consts"
 
 import ItemDetails from "ItemDetails"
+import HeaderNav from "HeaderNav"
 
 export default class App extends Component {
 
@@ -40,6 +41,7 @@ export default class App extends Component {
   render() {
     return (
       <div>
+        <HeaderNav />
         <List title="Artist"
               items={this.state.artists}
               autoFilter={true}
