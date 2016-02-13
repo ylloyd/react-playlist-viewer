@@ -1,9 +1,9 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 
-import App from "./App"
+import Routes from "./Routes"
 
 ReactDOM.render(
-  <App />,
+  <Routes />,
   document.getElementById('app')
 );
