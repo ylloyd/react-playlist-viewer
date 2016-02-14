@@ -12,6 +12,7 @@ export default class List extends Component {
         title: PropTypes.string,
         items: PropTypes.array,
         onInputChange: PropTypes.func,
+        onItemClick: PropTypes.func,
         autoFilter: PropTypes.bool,
         limit: PropTypes.number,
     };
@@ -20,6 +21,7 @@ export default class List extends Component {
         title: "",
         items: [],
         onInputChange: null,
+        onItemClick: null,
         autoFilter: true,
         limit: -1,
     };
@@ -31,7 +33,7 @@ export default class List extends Component {
     onChangeHandler = (value) => {
       this.setState({inputValue: value})
     };
-
+    
     filterName = (item) => {
       return (item.name && item.name.toLowerCase().search(this.state.inputValue.toLowerCase())!=-1);
     };
@@ -42,6 +44,7 @@ export default class List extends Component {
         title,
         items,
         onInputChange,
+        onItemClick,
         autoFilter,
         limit,
       } = this.props
@@ -64,7 +67,7 @@ export default class List extends Component {
 
                 return (
                     isFilter && isLimited &&
-                    <Item key={index} name={item.name} />
+                    <Item key={index} id={item.id} name={item.name} onClick={onItemClick}/>
                 );
               })
             }
