@@ -20,7 +20,6 @@ export default class HeaderNav extends Component {
 
     handleToggle = () =>{
       this.setState({open: !this.state.open});
-      console.log("state")
     };
 
     render() {
