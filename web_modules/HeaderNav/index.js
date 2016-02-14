@@ -1,4 +1,5 @@
 import React, {PropTypes, Component } from 'react';
+import {Link, IndexLink} from 'react-router'
 
 import AppBar from 'material-ui/lib/app-bar';
 import LeftNav from 'material-ui/lib/left-nav';
@@ -11,6 +12,8 @@ import NavigationClose from 'material-ui/lib/svg-icons/navigation/close';
 import NavigationMenu from 'material-ui/lib/svg-icons/navigation/menu';
 import IconMenu from 'material-ui/lib/menus/icon-menu';
 import MoreVertIcon from 'material-ui/lib/svg-icons/navigation/more-vert';
+
+import styles from './index.css'
 
 export default class HeaderNav extends Component {
 
@@ -35,8 +38,12 @@ export default class HeaderNav extends Component {
                     <AppBar
                         title="Menu"
                         iconElementLeft={<IconButton onClick={this.handleToggle}><NavigationClose /></IconButton>}	/>
-                    <MenuItem>Home</MenuItem>
-                    <MenuItem>Discover</MenuItem>
+                    <IndexLink to="/" activeClassName={styles.activeLink} className={styles.link}>
+                        <MenuItem>Home</MenuItem>
+                    </IndexLink>
+                    <Link to="/search" activeClassName={styles.activeLink} className={styles.link}>
+                        <MenuItem>Discover</MenuItem>
+                    </Link>
           </LeftNav>
         </div>)
 
