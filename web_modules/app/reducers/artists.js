@@ -44,7 +44,7 @@ export default function reducer(state = initialState, action) {
 }
 
 // redux actions
-export function get(options, name) {
+export function get(name) {
     return {
         types: [
             GET,
@@ -53,8 +53,7 @@ export function get(options, name) {
         ],
         promise: (
             fetchJSON(consts.api.enpoints.getSearch(name,"artist"), {
-                method: "GET",
-                query: options
+                method: "GET"
             })
         )
     }

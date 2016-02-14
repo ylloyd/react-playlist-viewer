@@ -1,30 +1,39 @@
 import React, { Component, PropTypes } from 'react';
+import {connect} from "react-redux"
 import fetchJSON from "app/fetchJSON";
 import consts from "app/consts"
 import InputList from "InputList";
 
+import { get as getArtists } from "app/reducers/artists"
+
 import styles from "./index.css";
 
+@connect(
+    (state) => ({
+        artists : state.artists
+    }),
+    (dispatch) => ({
+        getArtists : (value) => dispatch(getArtists(value)),
+    })
+)
 export default class InputArtist extends Component {
 
   static contextTypes = {
       router: PropTypes.object,
   };
 
-  state = {
-    artists: null,
+  static propTypes = {
+      artists : PropTypes.object,
+      getArtists : PropTypes.func,
   };
 
-  fetchArtist(name){
-    fetchJSON(consts.api.enpoints.getSearch(name,"artist")).then((response) => {
-        if(!response.error){
-          this.setState({artists:response.artists.items})
-        }
-    });
+  static defaultProps = {
+      artists : {},
+      getArtists : () => {}
   };
 
   onInputArtistChange = (value) => {
-      this.fetchArtist(value);
+      this.props.getArtists(value)
   };
 
   selectArtist = (item) => {
@@ -36,7 +45,7 @@ export default class InputArtist extends Component {
       <div className={styles.input}>
         <InputList title="Search Artists"
               onItemClick={this.selectArtist}
-              items={this.state.artists}
+              items={this.props.artists.results}
               autoFilter={true}
               onInputChange={this.onInputArtistChange} />
       </div>
