@@ -8,6 +8,9 @@ export default {
       getSearch:(query, type)=>{
         return apiPath+`search?query=${query}*&offset=0&limit=10&type=${type}`
       },
+      getArtist:(id)=>{
+        return apiPath+`artists/${id}`
+      },
       getKinds: () =>{
         return apiExplorerPath+`api/genres`
       }

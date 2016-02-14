@@ -37,7 +37,7 @@ export default class InputArtist extends Component {
   };
 
   selectArtist = (item) => {
-      this.context.router.push(`/artist/${item.id}/${item.name}`)
+      this.context.router.push(`/artist/${item.id}`)
   };
 
   render() {

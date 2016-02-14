@@ -31,7 +31,7 @@ export default class Routes extends Component {
        <Provider store={ store }>
           <Router history={browserHistory}>
             <Route path="/" component={App}>
-                <Route path="artist/:artistId(/:artistName)" component={PageArtist}/>
+                <Route path="artist/:artistId" component={PageArtist}/>
                 <Route path="discover" component={PageDiscover}/>
                 <IndexRoute component={PageHome} />
             </Route>
