@@ -1,6 +1,7 @@
 import React, {PropTypes, Component } from 'react';
 import {Link, IndexLink} from 'react-router'
 
+import InputArtist from 'InputArtist'
 import AppBar from 'material-ui/lib/app-bar';
 import LeftNav from 'material-ui/lib/left-nav';
 import MenuItem from 'material-ui/lib/menus/menu-item';
@@ -31,7 +32,8 @@ export default class HeaderNav extends Component {
         <div>
           <AppBar
             title="React playlist Viewer"
-            iconElementLeft={<IconButton onClick={this.handleToggle}><NavigationMenu /></IconButton>} />
+            iconElementLeft={<IconButton onClick={this.handleToggle}><NavigationMenu /></IconButton>}
+            iconElementRight={<InputArtist />} />
             <LeftNav
                 open={this.state.open}
                 onRequestChange={(open) => {}}>
@@ -41,7 +43,7 @@ export default class HeaderNav extends Component {
                     <IndexLink to="/" activeClassName={styles.activeLink} className={styles.link}>
                         <MenuItem>Home</MenuItem>
                     </IndexLink>
-                    <Link to="/search" activeClassName={styles.activeLink} className={styles.link}>
+                    <Link to="/discover" activeClassName={styles.activeLink} className={styles.link}>
                         <MenuItem>Discover</MenuItem>
                     </Link>
           </LeftNav>

@@ -33,7 +33,7 @@ export default class List extends Component {
     onChangeHandler = (value) => {
       this.setState({inputValue: value})
     };
-    
+
     filterName = (item) => {
       return (item.name && item.name.toLowerCase().search(this.state.inputValue.toLowerCase())!=-1);
     };
@@ -57,6 +57,7 @@ export default class List extends Component {
             {
                 <Input placeholder={title} onChange={onChangeHandler}/>
             }
+            <div className={styles.results}>
             {
               items &&
               items.map((item, index) => {
@@ -71,6 +72,7 @@ export default class List extends Component {
                 );
               })
             }
+            </div>
         </div>)
 
     }
