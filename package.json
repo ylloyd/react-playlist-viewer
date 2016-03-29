@@ -49,7 +49,9 @@
       "es2015",
       "stage-0"
     ],
-    "plugins":["transform-decorators-legacy"],
+    "plugins": [
+      "transform-decorators-legacy"
+    ],
     "env": {
       "development": {
         "presets": [
@@ -67,8 +69,10 @@
     "react-dom": "^0.14.4",
     "react-redux": "^4.4.0",
     "react-router": "^2.0.0",
+    "react-soundplayer": "^0.3.2",
     "redux": "^3.3.1",
     "redux-thunk": "^1.0.3",
+    "soundmanager2": "^2.97.20150601-a",
     "whatwg-fetch": "^0.11.0"
   }
 }

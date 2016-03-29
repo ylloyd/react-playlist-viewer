@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Router, Route, Link, browserHistory } from 'react-router';
+var SM = require('soundmanager2')
 
 import styles from "./index.css"
 
