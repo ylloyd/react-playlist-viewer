@@ -13,8 +13,13 @@ export default {
       },
       getKinds: () =>{
         return apiExplorerPath+`api/genres`
+      },
+      getArtistAlbums:(id)=>{
+        return apiPath+`artists/${id}/albums`
+      },
+      getAlbumInfo:(id)=>{
+        return apiPath+`albums/${id}`
       }
-
     }
   }
 }

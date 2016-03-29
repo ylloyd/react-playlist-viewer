@@ -31,7 +31,7 @@ export default class HeaderNav extends Component {
       return (
         <div>
           <AppBar
-            title="React playlist Viewer"
+            title="SpotiLike"
             iconElementLeft={<IconButton onClick={this.handleToggle}><NavigationMenu /></IconButton>}
             iconElementRight={<InputArtist />} />
             <LeftNav

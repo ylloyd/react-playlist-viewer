@@ -4,15 +4,18 @@ import fetchJSON from "app/fetchJSON";
 import consts from "app/consts"
 
 import { get as getArtist } from "app/reducers/artist"
+import { get as getArtistAlbums } from "app/reducers/album"
 
 import ItemDetails from "ItemDetails"
 
 @connect(
     (state) => ({
-        artist : state.artist
+        artist : state.artist,
+        album : state.album
     }),
     (dispatch) => ({
         getArtist : (value) => dispatch(getArtist(value)),
+        getArtistAlbums : (value) => dispatch(getArtistAlbums(value)),
     })
 )
 export default class PageArtist extends Component {
@@ -28,26 +31,34 @@ export default class PageArtist extends Component {
   static defaultProps = {
       params: {},
       artist : null,
-      getArtist : () => {}
+      album : null,
+      getArtist : () => {},
+      getArtistAlbums : () => {}
   };
   componentDidMount(){
 
       const {
         params,
         getArtist,
+        getArtistAlbums,
       } = this.props
 
-      if(params.artistId) getArtist(params.artistId)
+      if(params.artistId) {
+        getArtist(params.artistId)
+        getArtistAlbums(params.artistId)
+      }
   }
 
   componentWillReceiveProps(nextProps){
     const {
       params,
       getArtist,
+      getArtistAlbums,
     } = this.props
 
     if(nextProps.params.artistId!=params.artistId){
-      getArtist(nextProps.params.artistId)
+      getArtist(nextProps.params.artistId),
+      getArtistAlbums(nextProps.params.artistId)
     }
   }
 
@@ -55,15 +66,16 @@ export default class PageArtist extends Component {
     const {
       params,
       artist,
+      album,
     } = this.props
     return (
       <div>
         {
-            artist && !artist.loading &&
+            artist && !artist.loading && album && !album.loading &&
             <ItemDetails name={artist.name}
                          image={artist.picture ? artist.picture.url : null}
                          kinds={artist.genres}
-                         songs={[{name:"..."},{name:"..."},{name:"..."}]}  />
+                         albums={album} />
         }
       </div>
     )

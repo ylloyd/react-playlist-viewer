@@ -1,0 +1,3 @@
+var people = [
+	{name: "Thomas"}
+]

@@ -13,6 +13,7 @@ import PageHome from "PageHome"
 import PageArtist from "PageArtist"
 import PageDiscover from "PageDiscover"
 import PageNotFound from "PageNotFound"
+import PageAlbum from "PageAlbum"
 
 import DevTools from "app/redux/createDevTools"
 
@@ -33,6 +34,7 @@ export default class Routes extends Component {
             <Route path="/" component={App}>
                 <Route path="artist/:artistId" component={PageArtist}/>
                 <Route path="discover" component={PageDiscover}/>
+                <Route path="album/:albumId" component={PageAlbum}/>
                 <IndexRoute component={PageHome} />
             </Route>
             <Route path="*" component={PageNotFound}/>
