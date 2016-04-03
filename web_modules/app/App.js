@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 
-import HeaderNav from "HeaderNav"
+import HeaderNav from "HeaderNav";
+//import SomeArtists from "SomeArtists";
 
 export default class App extends Component {
   static propTypes = {

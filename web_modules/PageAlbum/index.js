@@ -63,7 +63,8 @@ export default class PageAlbum extends Component {
         {
             albuminfo && !albuminfo.loading &&
             <AlbumDetails image={albuminfo.images ? albuminfo.images[0].url : null}
-                          albumInfo={albuminfo} />
+                          albumInfo={albuminfo}
+                          info={albuminfo} />
         }
       </div>
     )

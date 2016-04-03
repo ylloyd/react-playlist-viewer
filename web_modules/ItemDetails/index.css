@@ -1,6 +1,5 @@
 .itemDetails{
   display: inline-block;
-  width: 400px;
 }
 
 .title {
@@ -11,7 +10,7 @@
   border-radius: 50px;
   width: 100px;
   height: 100px;
-  margin-right: 20px;
+  margin: 10px 20px 0;
   float: left;
 }
 
@@ -34,11 +33,26 @@
 
 @media (--small-viewport) {
   .itemDetails{
-    background: #000;
-    color: #FFF;
+    //background: #000;
+    //color: #FFF;
   }
 
   .song {
     border-top: solid 1px #FFF;
   }
+}
+
+.albumItem{
+  display: inline-block;
+  max-width: 350px;
+  margin: 10px;
+}
+
+.wrapper_page{
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.wrapperItem{
+  margin-top: 100px;
 }

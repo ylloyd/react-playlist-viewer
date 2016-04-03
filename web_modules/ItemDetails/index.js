@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { Router, Route, Link, browserHistory } from 'react-router';
 
 import styles from "./index.css"
+import Card from 'material-ui/lib/card/card';
+import CardMedia from 'material-ui/lib/card/card-media';
+import CardTitle from 'material-ui/lib/card/card-title';
 
 const Item = ({name ="", image=null, kinds=[], songs=[], albums=[]}) =>
 
@@ -28,7 +31,7 @@ const Item = ({name ="", image=null, kinds=[], songs=[], albums=[]}) =>
         })
       }
     </ul>
-    <ul className={styles.kinds}>
+    <div className={styles.wrapperItem}>
       {
         //const obj = Object.keys(albums)//[1, 2, 3]
         albums &&
@@ -39,14 +42,18 @@ const Item = ({name ="", image=null, kinds=[], songs=[], albums=[]}) =>
           // })
 
 
-          return <li key={index} >
-            <div>{albums[albumKey].name}</div>
-            <Link to={`/album/${albums[albumKey].id}`}>Links</Link>
-            <img src={albums[albumKey].images[0].url} className={styles.image} />
-          </li>
+          return <div className={styles.albumItem} key={index} >
+            <Link to={`/album/${albums[albumKey].id}`}>
+              <Card>
+                <CardMedia overlay={<CardTitle title={albums[albumKey].name} subtitle={"By " + name} />}>
+                  <img src={albums[albumKey].images[0].url} />
+                </CardMedia>
+              </Card>
+            </Link>
+          </div>
         })
       }
-    </ul>
+    </div>
 </div>)
 
 export default Item

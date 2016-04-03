@@ -19,6 +19,12 @@ export default {
       },
       getAlbumInfo:(id)=>{
         return apiPath+`albums/${id}`
+      },
+      getSomeArtists:()=>{
+        return apiPath+`artists`
+      },
+      getSomeAalbums:()=>{
+        return apiPath+`albums`
       }
     }
   }
